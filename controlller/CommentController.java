@@ -2,6 +2,7 @@ package controlller;
 
 import model.dto.CommentDto;
 import model.dao.CommentDao;
+import java.util.ArrayList;
 
 public class CommentController {
     private CommentController(){}
@@ -17,6 +18,11 @@ public class CommentController {
     }
 
     // 출력
+    public ArrayList<CommentDto> c_findAll(){
+        ArrayList<CommentDto> result = cd.c_findAll();
+        return result;
+    }
+    
 
     // 수정 
 
