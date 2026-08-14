@@ -31,7 +31,7 @@ public class BoardView {
         while( true ){
             try{
                  System.out.println("================게시물============= ");
-                System.out.println("1.등록 | 2.조회 | 3. 수정 | 4.삭제 ");
+                System.out.println("1.등록 | 2.조회 | 3. 수정 | 4.삭제 | 5. 이전 ");
                 System.out.println("================================= ");
                 System.out.print("번호 선택> ");
                 int b_ch = scan.nextInt();
@@ -39,6 +39,7 @@ public class BoardView {
                 else if( b_ch == 2 ){b_findAll();}
                 else if( b_ch == 3 ){b_update();}
                 else if( b_ch == 4 ){b_delete();}
+                else if( b_ch == 5){ run();}
 
             }catch( InputMismatchException e){
                 scan = new Scanner(System.in);

@@ -22,7 +22,7 @@ public class CommentView {
         while( true ){
             try{ 
                 System.out.println("================댓글============= ");
-                System.out.println("1.등록 | 2.조회 | 3. 수정 | 4.삭제 ");
+                System.out.println("1.등록 | 2.조회 | 3. 수정 | 4.삭제 | 5. 이전 ");
                 System.out.println("================================= ");
                 System.out.print("번호 선택> ");
                 int c_ch = scan.nextInt();
@@ -30,6 +30,7 @@ public class CommentView {
                 else if(c_ch==2){c_findAll();}
                 else if(c_ch==3){c_update();}
                 else if(c_ch==4){c_delete();}
+                else if(c_ch==5){BoardView.getInstance().run();}
             }catch( InputMismatchException e){
                 scan = new Scanner(System.in);
                 System.out.println("정수만 입력" + e);
