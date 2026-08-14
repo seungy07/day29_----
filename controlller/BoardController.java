@@ -1,7 +1,6 @@
 package controlller;
 
 import java.util.ArrayList;
-
 import model.dao.BoardDao;
 import model.dto.BoardDto;
 
