@@ -14,7 +14,20 @@ public class BoardView {
     private BoardController bc = BoardController.getInstance();
     private Scanner scan = new Scanner(System.in);
 
+    // 게시글 or 댓글 선택 부분
     public void run(){
+        while(true){
+            System.out.println("===================");
+            System.out.println("1. 게시물  2. 댓글 ");
+            System.out.println("===================");
+            System.out.print("번호 선택: ");
+            int ch = scan.nextInt();
+            if(ch==1){b_run();}
+            else if(ch==2){ CommentView.getInstance().c_run(); }
+        }
+    }
+
+    public void b_run(){
         while( true ){
             try{
                  System.out.println("================게시물============= ");
