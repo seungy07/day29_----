@@ -16,6 +16,7 @@ public class CommentView {
 
     private Scanner scan = new Scanner(System.in);
 
+
     // 댓글 선택시 실행 화면
     public void c_run(){
         while( true ){
