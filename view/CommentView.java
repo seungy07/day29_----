@@ -1,5 +1,6 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public class CommentView {
 
     private Scanner scan = new Scanner(System.in);
 
-    // 최초 실행 화면
+    // 댓글 선택시 실행 화면
     public void c_run(){
         while( true ){
             try{ 
@@ -25,7 +26,7 @@ public class CommentView {
                 System.out.print("번호 선택> ");
                 int c_ch = scan.nextInt();
                 if(c_ch==1){c_save();}
-                else if(c_ch==2){}
+                else if(c_ch==2){c_findAll();}
                 else if(c_ch==3){}
                 else if(c_ch==4){}
             }catch( InputMismatchException e){
@@ -46,9 +47,17 @@ public class CommentView {
     }
 
     // 조회 
+    public void c_findAll(){
+        ArrayList<CommentDto> result = cc.c_findAll();
+        for(CommentDto cdto : result){
+            System.out.println("=============================");
+            System.out.println("게시물 번호: " + cdto.getB_no() +"\n작성자: " + cdto.getC_writer()+ "\n내용: " + cdto.getC_content());
+        }
+    }
     
     
     // 수정
+    
 
     // 삭제
 
