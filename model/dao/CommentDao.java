@@ -35,6 +35,7 @@ public class CommentDao extends BaseDao {
             while( rs.next()){
                 CommentDto commentdto = new CommentDto();
                 commentdto.setB_no( rs.getInt("b_no"));
+                commentdto.setC_no(rs.getInt("c_no"));
                 commentdto.setC_content( rs.getString("c_content"));
                 commentdto.setC_writer( rs.getString("c_writer"));
                 list.add(commentdto);
@@ -46,9 +47,35 @@ public class CommentDao extends BaseDao {
     }
 
     // 수정
+    public boolean c_update(CommentDto commentDto){
+        try{
+            String sql = "update comment set c_content = ? where b_no = ? and c_no = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, commentDto.getC_content());
+            ps.setInt(2, commentDto.getB_no());
+            ps.setInt(3, commentDto.getC_no());
+
+            int result = ps.executeUpdate();
+            if(result == 1){ return true;}
+        }catch(SQLException e){System.err.println(e);}
+        return false;
+    }
 
     // 삭제
-
+    public boolean c_delete(CommentDto commentdto){
+        try{
+            String sql = "delete from comment where b_no = ? and c_no = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, commentdto.getB_no());
+            ps.setInt(2, commentdto.getC_no());
+            int count = ps.executeUpdate();
+            if(count >= 1){
+                return true;}
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        return false;
+    }
 
     
 }

@@ -25,7 +25,14 @@ public class CommentController {
     
 
     // 수정 
+    public boolean c_update(CommentDto commentdto){
+        return cd.c_update(commentdto);
+    }
+
 
     // 삭제
+    public boolean c_delete(CommentDto commentdto){
+        return cd.c_delete(commentdto);
+    }
     
 }

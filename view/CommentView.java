@@ -27,8 +27,8 @@ public class CommentView {
                 int c_ch = scan.nextInt();
                 if(c_ch==1){c_save();}
                 else if(c_ch==2){c_findAll();}
-                else if(c_ch==3){}
-                else if(c_ch==4){}
+                else if(c_ch==3){c_update();}
+                else if(c_ch==4){c_delete();}
             }catch( InputMismatchException e){
                 scan = new Scanner(System.in);
                 System.out.println("정수만 입력" + e);
@@ -51,15 +51,54 @@ public class CommentView {
         ArrayList<CommentDto> result = cc.c_findAll();
         for(CommentDto cdto : result){
             System.out.println("=============================");
-            System.out.println("게시물 번호: " + cdto.getB_no() +"\n작성자: " + cdto.getC_writer()+ "\n내용: " + cdto.getC_content());
+            System.out.println("게시물 번호: " + cdto.getB_no() + "\n댓글 번호: " + cdto.getC_no() +"\n작성자: " + cdto.getC_writer()+ "\n내용: " + cdto.getC_content());
         }
     }
     
     
     // 수정
+    public void c_update(){
+        System.out.print("게시물 번호: ");
+        int b_no = scan.nextInt();
+        System.out.print("수정할 댓글 번호: ");
+        int c_no = scan.nextInt();
+        System.out.print("수정할 댓글 내용: ");
+        String c_content = scan.next();
+
+        CommentDto commentDto = new CommentDto();
+        commentDto.setB_no(b_no);
+        commentDto.setC_no(c_no);
+        commentDto.setC_content(c_content);
+
+        boolean r = cc.c_update(commentDto);
+        if(r){System.out.println("댓글 수정 성공");
+        }else{System.out.println("댓글 수정 실패");}
+
+
+    }
     
 
     // 삭제
+    public void c_delete(){
+
+    System.out.print("게시물 번호: ");
+    int b_no = scan.nextInt();
+
+    System.out.print("삭제할 댓글 번호: ");
+    int c_no = scan.nextInt();
+
+    CommentDto commentdto = new CommentDto();
+    commentdto.setB_no(b_no);
+    commentdto.setC_no(c_no);
+
+    boolean r = cc.c_delete(commentdto);
+
+    if(r){
+        System.out.println("댓글 삭제 성공.");
+    }else{
+        System.out.println("댓글 삭제 실패.");
+    }
+}
 
 
 
