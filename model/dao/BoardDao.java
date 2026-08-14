@@ -40,7 +40,7 @@ public class BoardDao extends BaseDao {
         return list;
     }
     public boolean b_update(BoardDto boardDto){
-        try{String sql = "b_update board setB_content = ? where b_no = ?";
+        try{String sql = "update board set b_content = ? where b_no = ?";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, boardDto.getB_content());
         ps.setInt(2, boardDto.getB_no());
@@ -50,7 +50,7 @@ public class BoardDao extends BaseDao {
         return false;
     }
     public boolean b_delete(int b_no){
-        try{ String sql = "b_delete from board where b_no = ?";
+        try{ String sql = "delete from board where b_no = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1,b_no);
             int result = ps.executeUpdate();
